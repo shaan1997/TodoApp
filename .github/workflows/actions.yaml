@@ -22,8 +22,6 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '2.12.0'
-          channel: 'stable'
-          architecture: x64
 
       - run: flutter build apk --debug --split-per-abi
 

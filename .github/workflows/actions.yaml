@@ -16,15 +16,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Flutter
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11' # Change this to 8 or 17 if needed
+
+      - name: Set up Flutter Environment
         run: |
+          echo "Setting up Flutter Environment"
           FLUTTER_VERSION="3.7.0" # specify the version you want here
           curl -o flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_${FLUTTER_VERSION}-stable.zip
           unzip flutter.zip -d $HOME
           echo "$HOME/flutter/bin" >> $GITHUB_PATH
+          export PATH="$HOME/flutter/bin:$PATH"
+          flutter config --no-analytics
+          flutter doctor
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Run tests
+        run: flutter test
 
       - name: Build APK
         run: flutter build apk --release

@@ -18,7 +18,7 @@ jobs:
 
       - name: Set up Flutter
         run: |
-          FLUTTER_VERSION="2.10.0" # specify the version you want here
+          FLUTTER_VERSION="3.7.0" # specify the version you want here
           curl -o flutter.zip https://storage.googleapis.com/flutter_infra_release/releases/stable/macos/flutter_macos_${FLUTTER_VERSION}-stable.zip
           unzip flutter.zip -d $HOME
           echo "$HOME/flutter/bin" >> $GITHUB_PATH

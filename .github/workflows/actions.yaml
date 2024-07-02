@@ -18,7 +18,7 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
-          java-version: '12'
+          java-version: '22'
       - name: Fix flutter SDK folder permission
         run: git config --global --add safe.directory /tmp/flutter/--
 
